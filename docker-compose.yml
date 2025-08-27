@@ -1,0 +1,20 @@
+services:
+  api-siigo:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: clev/siigo-api:1.0.0
+    container_name: clev-api-siigo
+    restart: unless-stopped
+    env_file:
+      - .env
+    networks:
+      clev-network:
+        ipv4_address: 192.168.100.90
+    ports:
+      - "4090:4090"
+    command: node dist/main
+
+networks:
+  clev-network:
+    external: true
