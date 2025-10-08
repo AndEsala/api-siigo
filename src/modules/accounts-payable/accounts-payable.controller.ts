@@ -1,11 +1,16 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query, UseGuards } from '@nestjs/common';
 import { AccountsPayableService } from './accounts-payable.service';
+import { PermissionEnum } from 'src/authorization/permissions.enum';
+import { PermissionsGuard } from 'src/authorization/guards/permissions.guard';
+import { Permissions } from 'src/authorization/permissions.decorator';
 
 @Controller('accounts-payable')
 export class AccountsPayableController {
   constructor(private readonly accountsPayableService: AccountsPayableService) {}
 
   @Get()
+  @UseGuards(PermissionsGuard)
+  @Permissions(PermissionEnum.RETRIEVE_ACCOUNT_PAYABLES)
   async findAll(
     @Query("page") page: number = 1, 
     @Query("page_size") page_size: number = 25,

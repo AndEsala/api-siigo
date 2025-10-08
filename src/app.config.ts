@@ -27,7 +27,7 @@ export const AppConfig = {
         versionApi: process.env.VERSION_API || 'v1',
     },
     cors: {
-        origin: process.env.CORS_ORIGIN || '*',
+        origin: '*',
         methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
         allowedHeaders: 'Content-Type, Accept, Authorization',
         credentials: true
@@ -37,5 +37,8 @@ export const AppConfig = {
         access_key: process.env.SIIGO_ACCESS_KEY,
         base_path: `${process.env.SIIGO_BASE_PATH}/v1`,
         url_sign_in: process.env.SIIGO_URL_SIGN_IN
+    },
+    api: {
+        aegis: process.env.CLEV_AEGIS_URL || 'http://localhost:4060',
     }
 }

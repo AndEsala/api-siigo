@@ -10,6 +10,7 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { AccountsPayableModule } from './modules/accounts-payable/account-payables.module';
 import { ProvidersModule } from './modules/providers/providers.module';
 import { PaymentReceiptsModule } from './modules/payment-receipts/payment-receipts.module';
+import { AuthorizationModule } from './authorization/authorization.module';
 
 const typeOrmConfig: TypeOrmModuleOptions = {
   type: 'postgres',
@@ -31,7 +32,8 @@ const typeOrmConfig: TypeOrmModuleOptions = {
     ProductsModule, 
     AccountsPayableModule, 
     PaymentReceiptsModule,
-    ProvidersModule
+    ProvidersModule,
+    AuthorizationModule
   ],
   controllers: [AppController],
   providers: [AppService],
